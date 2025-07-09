@@ -89,7 +89,7 @@ def homePage():
 
 @app.route('/request', methods=['GET'])
 def requestPage():
-   commodityQuery = request.args.get('commodity')
+    commodityQuery = request.args.get('commodity')
     stateQuery = request.args.get('state')
     marketQuery = request.args.get('market')
 
