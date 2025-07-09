@@ -89,7 +89,7 @@ def homePage():
 
 @app.route('/request', methods=['GET'])
 def requestPage():
-    commodityQuery = request.args.get('commodity')
+   commodityQuery = request.args.get('commodity')
     stateQuery = request.args.get('state')
     marketQuery = request.args.get('market')
 
@@ -97,15 +97,8 @@ def requestPage():
         return jsonify({"error": "Missing query parameters"})
 
     try:
-        return jsonify({
-            "Commodity": commodityQuery,
-            "State": stateQuery,
-            "Market": marketQuery,
-            "Modal Price": "1800",
-            "Max Price": "2100",
-            "Min Price": "1600",
-            "Variety": "Nashik Red"
-        })
+        json_data = json.dumps(script(stateQuery, commodityQuery, marketQuery), indent=4)
+        return json_data
     except Exception as e:
         return jsonify({"error": str(e)})
 
